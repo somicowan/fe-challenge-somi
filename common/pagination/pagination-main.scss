@@ -1,3 +1,5 @@
+@import "./../css-variables/colors.scss";
+
 .pagination {
     margin: 15px 0;
     padding: 0;
@@ -5,7 +7,7 @@
     li {
         list-style: none;
         display: inline-block;
-        border: 1px solid #333;
+        border: 1px solid $dark-gray;
 
         a {
             color: #000;
@@ -22,14 +24,14 @@
 
         &.active {
             a {
-                background-color: #333;
+                background-color: $dark-gray;
                 color: #fff;
             }
         }
 
         &.disabled {
             a {
-                background-color: #ddd;
+                background-color: $light-gray;
             }
         }
     }
