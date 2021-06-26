@@ -1,0 +1,36 @@
+.pagination {
+    margin: 15px 0;
+    padding: 0;
+
+    li {
+        list-style: none;
+        display: inline-block;
+        border: 1px solid #333;
+
+        a {
+            color: #000;
+            padding: 9px;
+            text-decoration: none;
+            height: 1em;
+            display: inline-block;
+
+            &:hover,
+            &:focus {
+                text-decoration: underline;
+            }
+        }
+
+        &.active {
+            a {
+                background-color: #333;
+                color: #fff;
+            }
+        }
+
+        &.disabled {
+            a {
+                background-color: #ddd;
+            }
+        }
+    }
+}

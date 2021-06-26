@@ -16,7 +16,7 @@ class Part extends Component {
     }
 
     updatePartQty() {
-        this.props.updatePartQty(this.props.id, this.state.quantity);
+        this.props.updatePartQty(this.props.filename, this.props.id, this.state.quantity);
     }
 
     render() {
