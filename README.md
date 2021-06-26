@@ -29,3 +29,4 @@ I've added couple of accessibility features (e.g. `label` for the input with `ar
 6. Check file type (i.e. is file inputted a `.stl` or `.step`)? Not sure if that'd be in the back end when user adds to UI
 7. Maybe add a "add file" ability
 8. Add `aria-label` for save button to include file name
+9. See if I can "Current page" into `aria-label` for pagination
