@@ -19,14 +19,3 @@ I thought it would be a good idea to separate out often re-used components or va
 
 ## Some Accessibility Considerations
 I've added couple of accessibility features (e.g. `label` for the input with `aria-label` to be more specific for screenreaders, `aria-live` for the status).  
-
-# TODO (i.e. things I'd do if I had more time)
-1. Implement error handling for if the server isn't up
-2. Implement error handling for if user adds characters (not number) into input field
-3. Add `lang` for `html` (accessibility) 
-4. Change arrows in pagination to text
-5. Make UI look less ugly
-6. Check file type (i.e. is file inputted a `.stl` or `.step`)? Not sure if that'd be in the back end when user adds to UI
-7. Maybe add a "add file" ability
-8. Add `aria-label` for save button to include file name
-9. See if I can "Current page" into `aria-label` for pagination
