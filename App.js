@@ -25,16 +25,20 @@ class App extends React.Component {
     updatePartQty(filename, partId, newNum) {
         const header = {
             method: 'PUT',
-            headers: { 'Content-Type': 'applicaton/json'},
-            body: JSON.stringify({ quantity: newNum})
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ "quantity": newNum})
         }
 
+        console.log(header);
         fetch('http://localhost:5555/parts/' + partId, header)
             .then(res  => res.json())
             .then(
-                () => {
+                (result) => {
                     this.setState({
-                        statusMessage: "Quantity of " + filename + " updated to " + newNum
+                        statusMessage: "Quantity of " + filename + " updated to " + result.data.quantity
                     })
                 }
             )
