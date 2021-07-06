@@ -5,6 +5,9 @@ import Pagination from 'react-js-pagination';
 import Part from "./components/part/Part.js";
 
 import "./common/pagination/pagination-main.scss";
+import "./style.scss";
+
+const PORT_NUM = "8000";
 
 class App extends React.Component {
     constructor(props) {
@@ -14,12 +17,24 @@ class App extends React.Component {
             activePage: 1,
             perPage: 1,
             totalEntries: 1,
-            statusMessage: ""
+            statusMessage: "",
+            manufacturingProcesses: []
         }
     }
 
     componentDidMount() {
         this.getParts(this.state.activePage);
+        this.getProcesses();
+    }
+
+    getProcesses() {
+        fetch("http://localhost:" + PORT_NUM + "/manufacturing_processes")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    this.setState({manufacturingProcesses: result.data})
+                }
+            )
     }
 
     updatePartQty(filename, partId, newNum) {
@@ -32,8 +47,7 @@ class App extends React.Component {
             body: JSON.stringify({ "quantity": newNum})
         }
 
-        console.log(header);
-        fetch('http://localhost:5555/parts/' + partId, header)
+        fetch('http://localhost:' + PORT_NUM + '/parts/' + partId, header)
             .then(res  => res.json())
             .then(
                 (result) => {
@@ -45,7 +59,7 @@ class App extends React.Component {
     }
 
     getParts(pageNum) {
-        fetch("http://localhost:5555/parts/?page=" + pageNum).then(res => {
+        fetch("http://localhost:" + PORT_NUM + "/parts/?page=" + pageNum).then(res => {
             this.setState({
                 perPage: parseInt(res.headers.get('per-page')),
                 totalEntries: parseInt(res.headers.get('total-entries'))
@@ -72,6 +86,7 @@ class App extends React.Component {
                          id={item.id}
                          filename={item.part_file.file_name}
                          quantity={item.quantity }
+                         manufacturing={this.state.manufacturingProcesses}
                          updatePartQty={(filename, partId, newNum) => this.updatePartQty(filename, partId, newNum)}/>;
         });
 
